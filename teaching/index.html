@@ -76,19 +76,18 @@
 </header>
     <section>
       <style>
-body {
-  grid-template-columns: 200px 1fr !important;
-}
 main {
-  max-width: 1200px !important;
+  max-width: 1400px !important;  /* Much wider container */
   margin: 0 auto !important;
   padding: 2rem !important;
 }
 section {
   text-align: center !important;
-  max-width: 100% !important;
-  min-width: 100% !important;  /* This is the key - override the 70% */
-  width: 100% !important;
+  min-width: 0 !important;  /* Remove the 70% constraint */
+  flex-grow: 1 !important;   /* Let it grow to fill available space */
+}
+header {
+  flex-shrink: 0 !important;  /* Keep nav at fixed size */
 }
 </style>
 
