@@ -76,19 +76,25 @@
 </header>
     <section>
       <style>
+/* Just widen the container and let flexbox work naturally */
 main {
-  max-width: 1400px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
-  padding: 2rem !important;
-  flex-wrap: nowrap !important;  /* CRITICAL: Prevent wrapping */
+  flex-wrap: nowrap !important;
 }
+
+/* Let section grow to fill space */
 section {
-  min-width: 0 !important;
+  text-align: center !important;
   flex-grow: 1 !important;
+  min-width: 0 !important;
 }
+
+/* Keep header compact */
 header {
   flex-shrink: 0 !important;
-  width: auto !important;
+  min-width: 150px;
+  max-width: 150px;
 }
 </style>
 
