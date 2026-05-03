@@ -5,13 +5,14 @@
   {# Same stack as style.css / index.html (Inter via Google Fonts) #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  {# Include italic weights — WeasyPrint needs real italic faces (font-style alone is unreliable). #}
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     @page { margin: 0.65in 0.75in; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 9.5pt;
-      line-height: 1.32;
+      line-height: 1.45;
       color: #111;
     }
     h1 {
@@ -34,14 +35,14 @@
       margin-bottom: 0.75em;
       font-size: 9pt;
     }
-    .contact-block .addr { margin: 0.1em 0; }
-    .contact-block .email { margin-top: 0.28em; }
+    .contact-block .addr { margin: 0.18em 0; }
+    .contact-block .email { margin-top: 0.35em; }
     .cv-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1.25em;
-      margin: 0.2em 0;
+      margin: 0.32em 0;
       font-size: 9.5pt;
     }
     .cv-left { flex: 1; min-width: 0; }
@@ -56,25 +57,29 @@
     }
     /* Publication / WP / WIP: stacked lines */
     .pub-entry, .wp-entry, .wip-entry {
-      margin: 0.45em 0 0.55em 0;
+      margin: 0.55em 0 0.72em 0;
     }
     .pub-title, .wp-title, .wip-title {
       font-weight: 600;
     }
     .pub-authors, .wp-authors, .wip-authors {
-      margin: 0.08em 0 0 0;
+      margin: 0.2em 0 0 0;
       padding-left: 0;
       font-weight: 400;
     }
     .pub-journal {
-      margin: 0.08em 0 0 0;
+      margin: 0.2em 0 0 0;
     }
     .wp-status {
-      margin: 0.08em 0 0 0;
+      margin: 0.22em 0 0 0;
       font-style: italic;
       font-weight: 400;
     }
-    .grant { margin: 0.22em 0; font-size: 9.5pt; }
+    .wp-status em {
+      font-style: italic;
+      font-weight: inherit;
+    }
+    .grant { margin: 0.32em 0; font-size: 9.5pt; }
     a { color: #0b57d0; text-decoration: none; }
     .footer-updated {
       margin-top: 1.35em;
@@ -82,8 +87,8 @@
       font-size: 8pt;
       color: #444;
     }
-    .entry.teaching-entry { margin: 0.28em 0; font-size: 9.5pt; }
-    em { font-style: italic; }
+    .entry.teaching-entry { margin: 0.38em 0; font-size: 9.5pt; }
+    em { font-style: italic; font-family: inherit; }
   </style>
 </head>
 <body>
@@ -135,7 +140,7 @@
     <div class="entry wp-entry">
       <div class="wp-title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</div>
       {% if item.coauthors %}<div class="wp-authors">{{ item.coauthors }}</div>{% endif %}
-      {% if item.status %}<div class="wp-status">{{ item.status }}</div>{% endif %}
+      {% if item.status %}<div class="wp-status"><em>{{ item.status }}</em></div>{% endif %}
     </div>
     {% endfor %}
 
