@@ -13,20 +13,8 @@
     h1 {
       font-size: 18pt;
       font-weight: 600;
-      margin: 0 0 0.25em 0;
+      margin: 0 0 0.6em 0;
       text-align: center;
-    }
-    .bio {
-      margin: 0.35em auto 0.75em auto;
-      max-width: 36em;
-      text-align: center;
-      font-size: 10pt;
-    }
-    .updated {
-      text-align: center;
-      font-size: 9pt;
-      color: #444;
-      margin-bottom: 1.25em;
     }
     h2 {
       font-size: 11pt;
@@ -35,27 +23,79 @@
       border-bottom: 1px solid #ccc;
       padding-bottom: 0.15em;
     }
+    .contact-block {
+      text-align: center;
+      margin-bottom: 0.85em;
+      font-size: 10pt;
+    }
+    .contact-block .addr { margin: 0.12em 0; }
+    .contact-block .email { margin-top: 0.35em; }
+    .cv-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.25em;
+      margin: 0.22em 0;
+    }
+    .cv-left { flex: 1; min-width: 0; }
+    .cv-right {
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .edu-row .cv-edu-left {
+      flex: 1;
+      min-width: 0;
+    }
     .entry { margin: 0.35em 0 0.55em 0; }
     .title { font-weight: 600; }
     em { font-style: italic; }
     .grant { margin: 0.25em 0; }
     a { color: #0b57d0; text-decoration: none; }
+    .footer-updated {
+      margin-top: 1.5em;
+      text-align: center;
+      font-size: 9pt;
+      color: #444;
+    }
   </style>
 </head>
 <body>
 
   <h1>{{ meta.name }}</h1>
-  {% if meta.bio %}
-    {% for p in meta.bio %}
-    <p class="bio">{{ p }}</p>
-    {% endfor %}
-  {% endif %}
-  <p class="updated">Updated {{ updated_label }}</p>
 
 {% for sec in sections %}
   <h2>{{ sec.heading }}</h2>
 
-  {% if sec.kind == 'publication' %}
+  {% if sec.kind == 'contact' %}
+    {% for item in sec.entries %}
+    <div class="contact-block">
+      {% for line in item.address_lines %}
+      <div class="addr">{{ line }}</div>
+      {% endfor %}
+      {% if item.email %}
+      <div class="email"><a href="mailto:{{ item.email }}">{{ item.email }}</a></div>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+  {% elif sec.kind == 'experience' %}
+    {% for item in sec.entries %}
+    <div class="cv-row">
+      <span class="cv-left">{{ item.left }}</span>
+      <span class="cv-right">{{ item.right }}</span>
+    </div>
+    {% endfor %}
+
+  {% elif sec.kind == 'education' %}
+    {% for item in sec.entries %}
+    <div class="cv-row edu-row">
+      <span class="cv-edu-left"><strong>{{ item.degree }}</strong>{% if item.distinction %} {{ item.distinction }}{% endif %}, <em>{{ item.institution }}</em></span>
+      <span class="cv-right">{{ item.year }}</span>
+    </div>
+    {% endfor %}
+
+  {% elif sec.kind == 'publication' %}
     {% for item in sec.entries %}
     <div class="entry">
       {% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}<span class="title">{{ item.title }}</span>{% endif %}{% if item.coauthors %}, {{ item.coauthors }}{% endif %}.
@@ -89,6 +129,8 @@
 
   {% endif %}
 {% endfor %}
+
+  <p class="footer-updated">Updated {{ updated_label }}</p>
 
 </body>
 </html>
