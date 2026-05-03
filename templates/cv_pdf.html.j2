@@ -5,37 +5,40 @@
   <style>
     @page { margin: 0.65in 0.75in; }
     body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 11pt;
-      line-height: 1.35;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 9.5pt;
+      line-height: 1.32;
       color: #111;
     }
     h1 {
-      font-size: 18pt;
+      font-size: 15pt;
       font-weight: 600;
-      margin: 0 0 0.6em 0;
+      margin: 0 0 0.5em 0;
       text-align: center;
+      font-family: Georgia, "Times New Roman", Times, serif;
     }
     h2 {
-      font-size: 11pt;
+      font-size: 10pt;
       font-weight: 600;
-      margin: 1em 0 0.35em 0;
+      margin: 1em 0 0.3em 0;
       border-bottom: 1px solid #ccc;
-      padding-bottom: 0.15em;
+      padding-bottom: 0.12em;
+      font-family: Georgia, "Times New Roman", Times, serif;
     }
     .contact-block {
-      text-align: center;
-      margin-bottom: 0.85em;
-      font-size: 10pt;
+      text-align: left;
+      margin-bottom: 0.75em;
+      font-size: 9pt;
     }
-    .contact-block .addr { margin: 0.12em 0; }
-    .contact-block .email { margin-top: 0.35em; }
+    .contact-block .addr { margin: 0.1em 0; }
+    .contact-block .email { margin-top: 0.28em; }
     .cv-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1.25em;
-      margin: 0.22em 0;
+      margin: 0.2em 0;
+      font-size: 9.5pt;
     }
     .cv-left { flex: 1; min-width: 0; }
     .cv-right {
@@ -47,17 +50,31 @@
       flex: 1;
       min-width: 0;
     }
-    .entry { margin: 0.35em 0 0.55em 0; }
-    .title { font-weight: 600; }
-    em { font-style: italic; }
-    .grant { margin: 0.25em 0; }
+    /* Publication / WP / WIP: stacked lines */
+    .pub-entry, .wp-entry, .wip-entry {
+      margin: 0.45em 0 0.55em 0;
+    }
+    .pub-title, .wp-title, .wip-title {
+      font-weight: 600;
+    }
+    .pub-authors, .wp-authors, .wip-authors {
+      margin: 0.08em 0 0 0;
+      padding-left: 0;
+      font-weight: 400;
+    }
+    .pub-journal {
+      margin: 0.08em 0 0 0;
+    }
+    .grant { margin: 0.22em 0; font-size: 9.5pt; }
     a { color: #0b57d0; text-decoration: none; }
     .footer-updated {
-      margin-top: 1.5em;
+      margin-top: 1.35em;
       text-align: center;
-      font-size: 9pt;
+      font-size: 8pt;
       color: #444;
     }
+    .entry.teaching-entry { margin: 0.28em 0; font-size: 9.5pt; }
+    em { font-style: italic; }
   </style>
 </head>
 <body>
@@ -97,29 +114,32 @@
 
   {% elif sec.kind == 'publication' %}
     {% for item in sec.entries %}
-    <div class="entry">
-      {% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}<span class="title">{{ item.title }}</span>{% endif %}{% if item.coauthors %}, {{ item.coauthors }}{% endif %}.
-      <em>{{ item.venue }}</em>, {{ item.year }}.
+    <div class="entry pub-entry">
+      <div class="pub-title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</div>
+      {% if item.coauthors %}<div class="pub-authors">{{ item.coauthors }}</div>{% endif %}
+      <div class="pub-journal"><em>{{ item.venue }}</em>, {{ item.year }}.</div>
     </div>
     {% endfor %}
 
   {% elif sec.kind == 'working_paper' %}
     {% for item in sec.entries %}
-    <div class="entry">
-      {% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}<span class="title">{{ item.title }}</span>{% endif %}{% if item.coauthors %}, {{ item.coauthors }}{% endif %}.
+    <div class="entry wp-entry">
+      <div class="wp-title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</div>
+      {% if item.coauthors %}<div class="wp-authors">{{ item.coauthors }}</div>{% endif %}
     </div>
     {% endfor %}
 
   {% elif sec.kind == 'wip' %}
     {% for item in sec.entries %}
-    <div class="entry">
-      <span class="title">{{ item.title }}</span>{% if item.coauthors %} {{ item.coauthors }}{% endif %}.
+    <div class="entry wip-entry">
+      <div class="wip-title">{{ item.title }}</div>
+      {% if item.coauthors %}<div class="wip-authors">{{ item.coauthors }}</div>{% endif %}
     </div>
     {% endfor %}
 
   {% elif sec.kind == 'teaching' %}
     {% for item in sec.entries %}
-    <div class="entry"><span class="title">{{ item.course }}</span> — {{ item.detail }}</div>
+    <div class="entry teaching-entry"><strong>{{ item.course }}</strong> — {{ item.detail }}</div>
     {% endfor %}
 
   {% elif sec.kind == 'grant' %}
