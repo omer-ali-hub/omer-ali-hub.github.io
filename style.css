@@ -98,6 +98,12 @@ a:hover {
     line-height: 1.5;
 }
 
+.paper .paper-status {
+    display: block;
+    margin-top: 0.35em;
+    font-style: italic;
+}
+
 .paper-title {
     color: #0366d6;
     text-decoration: none;

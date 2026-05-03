@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  {# Same stack as style.css / index.html (Inter via Google Fonts) #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     @page { margin: 0.65in 0.75in; }
     body {
-      font-family: Georgia, "Times New Roman", Times, serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       font-size: 9.5pt;
       line-height: 1.32;
       color: #111;
@@ -15,7 +19,7 @@
       font-weight: 600;
       margin: 0 0 0.5em 0;
       text-align: center;
-      font-family: Georgia, "Times New Roman", Times, serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
     h2 {
       font-size: 10pt;
@@ -23,7 +27,7 @@
       margin: 1em 0 0.3em 0;
       border-bottom: 1px solid #ccc;
       padding-bottom: 0.12em;
-      font-family: Georgia, "Times New Roman", Times, serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
     .contact-block {
       text-align: left;
@@ -64,6 +68,11 @@
     }
     .pub-journal {
       margin: 0.08em 0 0 0;
+    }
+    .wp-status {
+      margin: 0.08em 0 0 0;
+      font-style: italic;
+      font-weight: 400;
     }
     .grant { margin: 0.22em 0; font-size: 9.5pt; }
     a { color: #0b57d0; text-decoration: none; }
@@ -126,6 +135,7 @@
     <div class="entry wp-entry">
       <div class="wp-title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</div>
       {% if item.coauthors %}<div class="wp-authors">{{ item.coauthors }}</div>{% endif %}
+      {% if item.status %}<div class="wp-status">{{ item.status }}</div>{% endif %}
     </div>
     {% endfor %}
 
