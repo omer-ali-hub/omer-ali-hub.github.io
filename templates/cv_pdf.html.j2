@@ -12,19 +12,19 @@
     @page { margin: 0.72in 0.78in; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 8.35pt;
-      line-height: 1.5;
+      font-size: 7.65pt;
+      line-height: 1.52;
       color: #111;
     }
     h1 {
-      font-size: 13pt;
+      font-size: 12pt;
       font-weight: 600;
       margin: 0 0 0.65em 0;
       text-align: center;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
     h2 {
-      font-size: 9pt;
+      font-size: 8.25pt;
       font-weight: 600;
       margin: 1.5em 0 0.45em 0;
       border-bottom: 1px solid #ccc;
@@ -37,7 +37,7 @@
     .contact-block {
       text-align: left;
       margin-bottom: 1em;
-      font-size: 8pt;
+      font-size: 7.35pt;
     }
     .contact-block .addr { margin: 0.22em 0; }
     .contact-block .email { margin-top: 0.4em; }
@@ -88,7 +88,7 @@
     .footer-updated {
       margin-top: 2em;
       text-align: center;
-      font-size: 7pt;
+      font-size: 6.5pt;
       color: #444;
     }
     .entry.teaching-entry { margin: 0.48em 0; font-size: inherit; }
@@ -144,7 +144,7 @@
     <div class="entry wp-entry">
       <div class="wp-title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</div>
       {% if item.coauthors %}<div class="wp-authors">{{ item.coauthors }}</div>{% endif %}
-      {% if item.status %}<div class="wp-status"><em>{{ item.status }}</em></div>{% endif %}
+      {% if item.paper_status %}<div class="wp-status"><em>{{ item.paper_status }}</em></div>{% endif %}
     </div>
     {% endfor %}
 
