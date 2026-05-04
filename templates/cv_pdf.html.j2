@@ -7,6 +7,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
+    /* --- CV PDF layout: edit these rules (file: templates/cv_pdf.html.j2) ---
+       @page          page margins
+       body            base font size & line-height (within paragraphs)
+       h2              section titles (spacing above/below each section)
+       h2:first-of-type   gap under your name before first section
+       .pub-entry …    space around each publication / WP / WIP block
+       .footer-updated  “Updated …” line
+    */
     @page { margin: 0.72in 0.78in; }
     body {
       font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
@@ -29,12 +37,13 @@
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin: 1em 0 0.35em 0;
+      /* margin-top adds space *between* sections; margin-bottom before section body */
+      margin: 1.45em 0 0.48em 0;
       padding-bottom: 0;
       border-bottom: none;
     }
     h2:first-of-type {
-      margin-top: 0.55em;
+      margin-top: 0.6em;
     }
     .contact-block {
       text-align: left;
