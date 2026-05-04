@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  {# Same stack as style.css / index.html (Inter via Google Fonts) #}
+  {# Reference CV used Adobe Garamond (embedded in PDF). We use EB Garamond from Google Fonts — same classical family, licensed for web/PDF generation. For Adobe's files verbatim, you’d add licensed .otf + @font-face. #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  {# Include italic weights — WeasyPrint needs real italic faces (font-style alone is unreliable). #}
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <style>
-    /* Smaller type + more air between sections and entries */
     @page { margin: 0.72in 0.78in; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 7.65pt;
-      line-height: 1.52;
+      font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
+      font-size: 9pt;
+      line-height: 1.45;
       color: #111;
     }
     h1 {
-      font-size: 12pt;
-      font-weight: 600;
+      font-size: 13pt;
+      font-weight: 700;
       margin: 0 0 0.65em 0;
       text-align: center;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
     }
+    /* Bold, all caps, centered — like reference CV section titles */
     h2 {
-      font-size: 8.25pt;
-      font-weight: 600;
-      margin: 1.5em 0 0.45em 0;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.18em;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 1.45em 0 0.55em 0;
+      padding-bottom: 0.28em;
+      border-bottom: 1px solid #222;
     }
     h2:first-of-type {
       margin-top: 0.85em;
@@ -37,7 +39,7 @@
     .contact-block {
       text-align: left;
       margin-bottom: 1em;
-      font-size: 7.35pt;
+      font-size: 8.5pt;
     }
     .contact-block .addr { margin: 0.22em 0; }
     .contact-block .email { margin-top: 0.4em; }
@@ -59,23 +61,22 @@
       flex: 1;
       min-width: 0;
     }
-    /* Publication / WP / WIP: stacked lines */
     .pub-entry, .wp-entry, .wip-entry {
-      margin: 0.75em 0 1.05em 0;
+      margin: 0.65em 0 0.95em 0;
     }
     .pub-title, .wp-title, .wip-title {
       font-weight: 600;
     }
     .pub-authors, .wp-authors, .wip-authors {
-      margin: 0.3em 0 0 0;
+      margin: 0.28em 0 0 0;
       padding-left: 0;
       font-weight: 400;
     }
     .pub-journal {
-      margin: 0.3em 0 0 0;
+      margin: 0.28em 0 0 0;
     }
     .wp-status {
-      margin: 0.3em 0 0 0;
+      margin: 0.28em 0 0 0;
       font-style: italic;
       font-weight: 400;
       color: #444;
@@ -90,10 +91,11 @@
     .footer-updated {
       margin-top: 2em;
       text-align: center;
-      font-size: 6.5pt;
+      font-size: 7.5pt;
       color: #444;
+      font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
     }
-    .entry.teaching-entry { margin: 0.48em 0; font-size: inherit; }
+    .entry.teaching-entry { margin: 0.42em 0; font-size: inherit; }
     em { font-style: italic; font-family: inherit; }
   </style>
 </head>
