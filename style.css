@@ -98,9 +98,28 @@ a:hover {
     line-height: 1.5;
 }
 
-.paper .paper-status {
+/* Stacked layout (title / authors / venue — aligned with CV PDF) */
+.paper-block .paper-line {
     display: block;
+}
+
+.paper-block .paper-line + .paper-line {
     margin-top: 0.35em;
+}
+
+.paper-title-row .paper-title {
+    font-weight: 600;
+}
+
+.paper-authors {
+    font-weight: 400;
+}
+
+.paper-venue {
+    font-weight: 400;
+}
+
+.paper .paper-status {
     font-style: italic;
 }
 
@@ -112,6 +131,11 @@ a:hover {
 
 .paper-title:hover {
     text-decoration: underline;
+}
+
+.wip-title-text {
+    font-weight: 600;
+    color: #24292e;
 }
 
 /* Teaching */
