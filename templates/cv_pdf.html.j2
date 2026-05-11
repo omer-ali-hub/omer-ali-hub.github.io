@@ -10,7 +10,7 @@
     /* --- CV PDF layout: edit these rules (file: templates/cv_pdf.html.j2) ---
        @page          page margins
        body            base font size & line-height (within paragraphs)
-       h2              section titles (spacing above/below each section)
+       h2              section titles (font-weight, spacing above/below each section)
        h2:first-of-type   gap under your name before first section
        .pub-entry …    space around each publication / WP / WIP block
        .footer-updated  “Updated …” line
@@ -29,21 +29,21 @@
       text-align: center;
       font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
     }
-    /* Bold, all caps, centered — like reference CV section titles */
+    /* All caps, centered; regular weight (not bold) */
     h2 {
       font-size: 9.5pt;
-      font-weight: 700;
+      font-weight: 400;
       font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      /* margin-top adds space *between* sections; margin-bottom before section body */
-      margin: 1.45em 0 0.48em 0;
+      /* margin-top: space between sections (~ +½ body line from prior 1.45em) */
+      margin: 2.1em 0 0.48em 0;
       padding-bottom: 0;
       border-bottom: none;
     }
     h2:first-of-type {
-      margin-top: 0.6em;
+      margin-top: 0.92em;
     }
     .contact-block {
       text-align: left;
