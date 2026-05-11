@@ -29,14 +29,15 @@
       text-align: center;
       font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
     }
-    /* All caps, centered; regular weight (not bold) */
+    /* All caps + tracking read heavier than body even at 400; forbid faux-bold */
     h2 {
-      font-size: 9.5pt;
-      font-weight: 400;
+      font-size: 9pt;
+      font-weight: 400 !important;
+      font-synthesis: none;
       font-family: 'EB Garamond', Garamond, 'Times New Roman', Times, serif;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.055em;
       /* margin-top: space between sections (~ +½ body line from prior 1.45em) */
       margin: 2.1em 0 0.48em 0;
       padding-bottom: 0;
